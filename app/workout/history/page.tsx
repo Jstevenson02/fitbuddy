@@ -75,17 +75,22 @@ export default function WorkoutHistory() {
 
   return (
     <div className='flex flex-col items-center min-h-screen p-4'>
+      <div className='flex justify-between w-full max-w-2xl mb-4'>
+        <button
+          onClick={() => router.push("/workout/new")}
+          className='mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+        >
+          Log New Workout
+        </button>
+      </div>
       <h1 className='text-2xl font-bold mb-4'>Workout History</h1>
       {workouts.length === 0 ? (
         <p className='text-gray-500'>No workouts found.</p>
       ) : (
         <div className='w-full max-w-2xl space-y-4'>
           {workouts.map((workout) => (
-            <div key={workout.id} className='border rounded-lg p-4 bg-white shadow-sm'>
+            <div key={workout.id} className='border rounded-lg p-4 bg-gray-800 shadow-sm'>
               <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
-                <p>
-                  <strong className='font-semibold'>ID:</strong> {workout.id}
-                </p>
                 <p>
                   <strong className='font-semibold'>Date:</strong>{" "}
                   {new Date(workout.date).toLocaleDateString()}
@@ -101,7 +106,7 @@ export default function WorkoutHistory() {
                 ) : (
                   <ul className='list-disc pl-5 mt-1'>
                     {workout.exercises.map((exercise, index) => (
-                      <li key={index} className='text-gray-700'>
+                      <li key={index} className='text-white'>
                         {exercise.name} - {exercise.reps} reps
                       </li>
                     ))}
@@ -112,12 +117,6 @@ export default function WorkoutHistory() {
           ))}
         </div>
       )}
-      <button
-        onClick={() => router.push("/workout/new")}
-        className='mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
-      >
-        Log New Workout
-      </button>
     </div>
   );
 }

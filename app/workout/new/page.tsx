@@ -84,6 +84,14 @@ export default function NewWorkout() {
 
   return (
     <div className='flex flex-col items-center min-h-screen p-4'>
+      <div className='w-full max-w-2xl mb-4'>
+        <button
+          onClick={() => router.push("/workout/history")}
+          className='mt-6 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600'
+        >
+          Back to History
+        </button>
+      </div>
       <h1 className='text-2xl mb-4'>Log a Workout</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full max-w-md'>
         <input
