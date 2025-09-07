@@ -1,4 +1,4 @@
-// app/dashboard/page.tsx
+// app/Dashboard/page.tsx
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";

@@ -77,7 +77,7 @@ export default function NewWorkout() {
       console.error("Error inserting workout:", error.message);
       alert("Failed to save workout: " + error.message);
     } else {
-      router.push("/dashboard");
+      router.push("/Dashboard");
     }
     setIsLoading(false);
   };

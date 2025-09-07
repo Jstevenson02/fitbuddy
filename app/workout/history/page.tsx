@@ -41,7 +41,7 @@ export default function WorkoutHistory() {
         .from("workouts")
         .select("id, date, duration, exercises")
         .eq("user_id", user.id)
-        .order("id", { ascending: true });
+        .order("date", { ascending: false });
 
       if (error) {
         console.error("Error fetching workouts:", error.message);
@@ -75,12 +75,18 @@ export default function WorkoutHistory() {
 
   return (
     <div className='flex flex-col items-center min-h-screen p-4'>
-      <div className='flex justify-between w-full max-w-2xl mb-4'>
+      <div className='flex justify-between w-full max-w-2xl mb-4' id='navigation-buttons'>
         <button
           onClick={() => router.push("/workout/new")}
-          className='mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+          className='mt-6 bg-blue-500 text-white text-lg px-4 py-2 rounded hover:bg-blue-600'
         >
-          Log New Workout
+          + New Workout
+        </button>
+        <button
+          onClick={() => router.push("/")}
+          className='mt-6 bg-gray-500 text-white text-lg px-4 py-2 rounded hover:bg-gray-400'
+        >
+          🏠︎
         </button>
       </div>
       <h1 className='text-2xl font-bold mb-4'>Workout History</h1>
@@ -117,6 +123,17 @@ export default function WorkoutHistory() {
           ))}
         </div>
       )}
+      <div>
+        <button
+          onClick={() => {
+            const el = document.getElementById("navigation-buttons");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+          className='mt-4 bg-gray-500 text-white px-2 py-1.5 rotate-270 rounded-full text-2xl  hover:bg-gray-400 border-2 border-white'
+        >
+          ➜
+        </button>
+      </div>
     </div>
   );
 }
