@@ -55,14 +55,19 @@ export default function WorkoutHistory() {
     fetchWorkouts();
   }, [router]);
 
-  if (loading) {
+  if (loading)
     return (
-      <div className='flex flex-col items-center min-h-screen p-4'>
-        <h1 className='text-2xl font-bold mb-4'>Workout History</h1>
-        <p className='text-gray-500'>Loading...</p>
+      <div className='h-screen text-center flex flex-col items-center justify-center'>
+        <div
+          className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white'
+          role='status'
+        >
+          <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+            Loading...
+          </span>
+        </div>
       </div>
     );
-  }
 
   if (error) {
     return (
